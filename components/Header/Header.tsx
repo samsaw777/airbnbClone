@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Image1 from "../../Images/Image1.webp";
 import classnames from "classnames";
 const Header = () => {
   const [navbar, setNavbar] = useState<boolean>(false);
@@ -42,11 +41,19 @@ const Header = () => {
             />
           </div>
           {/* User Side */}
-          <div className="flex items-center">
-            <div className="flex p-1 border-2 border-gray-400 rounded-full">
+          <div className="flex items-center space-x-4">
+            <div
+              className={classnames(
+                navbar ? "border-black" : "border-white",
+                "flex p-1 border-2  rounded-full"
+              )}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-400"
+                className={classnames(
+                  navbar ? "text-black" : "text-white",
+                  "h-6 w-6 "
+                )}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -60,7 +67,10 @@ const Header = () => {
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-400"
+                className={classnames(
+                  navbar ? "text-black" : "text-white",
+                  "h-6 w-6 "
+                )}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -79,11 +89,11 @@ const Header = () => {
         <div
           className={classnames(
             navbar ? "hidden" : "flex",
-            "broder border-2 border-gray-300 p-3 rounded-full"
+            "broder border-2 border-white p-3 rounded-full"
           )}
         >
           <input
-            className="flex-grow outline-none bg-transparent"
+            className="flex-grow outline-none bg-transparent placeholder-white text-white"
             placeholder="Search a place here"
           />
           <svg
@@ -100,15 +110,6 @@ const Header = () => {
           </svg>
         </div>
       </header>
-      <div className="absolute top-0 h-[700px] w-full">
-        <Image
-          src={Image1}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          alt="Image1"
-        />
-      </div>
     </>
   );
 };
