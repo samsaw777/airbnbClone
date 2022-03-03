@@ -5,15 +5,6 @@ const Home: NextPage = () => {
   return (
     <div className="bg-green-200 h-indexHeight">
       <Header />
-      <div>Thisisi</div>
-      <div>Thisisi</div>
-      <div>Thisisi</div>
-      <div>Thisisi</div>
-      <div>Thisisi</div>
-      <div>Thisisi</div>
-      <div>Thisisi</div>
-      <div>Thisisi</div>
-      <div>Thisisi</div>
     </div>
   );
 };
