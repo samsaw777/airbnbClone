@@ -3,7 +3,7 @@ import Image from "next/image";
 import Image1 from "../../Images/Image1.webp";
 const Banner = () => {
   return (
-    <div className="absolute top-0 h-[400px] w-full">
+    <div className="absolute top-0 h-[400px] 2xl:h-[600px] w-full">
       <Image
         src={Image1}
         layout="fill"

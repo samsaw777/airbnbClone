@@ -26,7 +26,7 @@ const Header = () => {
       <header
         className={classnames(
           navbar ? "bg-white shadow-md" : "bg-transparent",
-          "sticky top-0 z-50 p-5 space-y-3"
+          "sticky top-0 z-50 p-3 space-y-3 md:px-20"
         )}
       >
         {/* left Side */}
@@ -39,6 +39,31 @@ const Header = () => {
               objectFit="contain"
               objectPosition="left"
             />
+          </div>
+          <div className="hidden sm:flex">
+            <div
+              className={classnames(
+                navbar ? "flex" : "hidden",
+                "broder border-2 border-gray-200 p-3 rounded-full mx-auto md:w-96"
+              )}
+            >
+              <input
+                className="flex-grow outline-none bg-transparent placeholder-black text-black"
+                placeholder="Search a place here"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7 bg-red-400 text-white p-1 rounded-full"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
           </div>
           {/* User Side */}
           <div className="flex items-center space-x-4">
@@ -89,7 +114,7 @@ const Header = () => {
         <div
           className={classnames(
             navbar ? "hidden" : "flex",
-            "broder border-2 border-white p-3 rounded-full"
+            "broder border-2 border-white p-3 rounded-full mx-auto md:w-96"
           )}
         >
           <input
