@@ -25,7 +25,7 @@ const Header = () => {
     <>
       <header
         className={classnames(
-          navbar ? "bg-white shadow-md" : "bg-transparent",
+          navbar ? "bg-white shadow-md" : "bg-black",
           "sticky top-0 z-50 p-3 space-y-3 md:px-20"
         )}
       >

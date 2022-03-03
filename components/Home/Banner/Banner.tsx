@@ -1,14 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import Image1 from "../../Images/Image1.webp";
+import Image1 from "../../../Images/Image1.webp";
 const Banner = () => {
   return (
-    <div className="absolute top-0 h-[400px] 2xl:h-[600px] w-full">
+    <div className="relative h-[200px] lg:h-[700px]">
       <Image
         src={Image1}
         layout="fill"
-        objectFit="cover"
-        objectPosition="center"
+        // objectFit="cover"
+        // objectPosition="center"
         alt="Image1"
       />
     </div>
