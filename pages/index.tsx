@@ -5,7 +5,7 @@ import SmallCard from "../components/Home/SmallCard";
 const Home = (exploreData: any) => {
   console.log(exploreData);
   return (
-    <div className="block">
+    <div className="block h-indexHeight">
       <Header />
       <Banner />
       {/* Location Near By */}

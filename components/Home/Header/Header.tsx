@@ -6,7 +6,6 @@ const Header = () => {
 
   useEffect(function mount() {
     const changeBackground = () => {
-      console.log(window.scrollY);
       if (window.scrollY >= 20) {
         setNavbar(true);
       } else {
@@ -25,8 +24,8 @@ const Header = () => {
     <>
       <header
         className={classnames(
-          navbar ? "bg-white shadow-md" : "bg-black",
-          "sticky top-0 z-50 p-3 space-y-3 md:px-20"
+          navbar ? "bg-white" : "bg-transparent",
+          "sticky top-0 z-50 p-5 md:px-20"
         )}
       >
         {/* left Side */}
@@ -40,15 +39,20 @@ const Header = () => {
               objectPosition="left"
             />
           </div>
-          <div className="hidden sm:flex">
+          <div className="hidden sm:flex relative w-72 md:w-96">
             <div
               className={classnames(
-                navbar ? "flex" : "hidden",
-                "broder border-2 border-gray-200 p-3 rounded-full mx-auto md:w-96"
+                navbar ? "-top-2" : "top-28",
+                "transform transition duration-150 ease-in-out absolute flex broder border-2 border-gray-200 p-3 justify-center rounded-full mx-auto w-72 md:w-96"
               )}
             >
               <input
-                className="flex-grow outline-none bg-transparent placeholder-black text-black"
+                className={classnames(
+                  navbar
+                    ? "text-black placeholder-black"
+                    : "text-white placeholder-white font-bold",
+                  "flex-grow outline-none bg-transparent"
+                )}
                 placeholder="Search a place here"
               />
               <svg
@@ -69,14 +73,14 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <div
               className={classnames(
-                navbar ? "border-black" : "border-white",
+                navbar ? "border-black" : "border-black",
                 "flex p-1 border-2  rounded-full"
               )}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={classnames(
-                  navbar ? "text-black" : "text-white",
+                  navbar ? "text-black" : "text-black",
                   "h-6 w-6 "
                 )}
                 fill="none"
@@ -93,7 +97,7 @@ const Header = () => {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={classnames(
-                  navbar ? "text-black" : "text-white",
+                  navbar ? "text-black" : "text-black",
                   "h-6 w-6 "
                 )}
                 fill="none"
@@ -111,28 +115,30 @@ const Header = () => {
           </div>
         </div>
         {/* Search Side */}
-        <div
-          className={classnames(
-            navbar ? "hidden" : "flex",
-            "broder border-2 border-white p-3 rounded-full mx-auto md:w-96"
-          )}
-        >
-          <input
-            className="flex-grow outline-none bg-transparent placeholder-white text-white"
-            placeholder="Search a place here"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-7 w-7 bg-red-400 text-white p-1 rounded-full"
-            viewBox="0 0 20 20"
-            fill="currentColor"
+        <div className="absolute top-28 left-0 right-0 px-10 block sm:hidden">
+          <div
+            className={classnames(
+              navbar ? "hidden" : "flex",
+              "broder border-2 border-white p-3 rounded-full md:w-96"
+            )}
           >
-            <path
-              fillRule="evenodd"
-              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-              clipRule="evenodd"
+            <input
+              className="flex-grow outline-none bg-transparent placeholder-white text-white"
+              placeholder="Search a place here"
             />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7 bg-red-400 text-white p-1 rounded-full"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
         </div>
       </header>
     </>
