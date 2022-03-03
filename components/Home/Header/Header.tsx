@@ -70,47 +70,66 @@ const Header = () => {
             </div>
           </div>
           {/* User Side */}
-          <div className="flex items-center space-x-4">
-            <div
-              className={classnames(
-                navbar ? "border-black" : "border-black",
-                "flex p-1 border-2  rounded-full"
-              )}
-            >
+          <div className="flex space-x-2 sm:space-x-0 items-center">
+            <div className="block sm:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={classnames(
-                  navbar ? "text-black" : "text-black",
-                  "h-6 w-6 "
+                  navbar ? "block" : "hidden",
+                  "h-7 w-7 bg-red-400 text-white p-1 rounded-full cursor-pointer"
                 )}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
+                viewBox="0 0 20 20"
+                fill="currentColor"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
+                  fillRule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clipRule="evenodd"
                 />
               </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
+            </div>
+            <div className="flex items-center space-x-4">
+              <div
                 className={classnames(
-                  navbar ? "text-black" : "text-black",
-                  "h-6 w-6 "
+                  navbar ? "border-black" : "border-black",
+                  "flex p-1 border-2  rounded-full"
                 )}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={classnames(
+                    navbar ? "text-black" : "text-black",
+                    "h-6 w-6 "
+                  )}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={classnames(
+                    navbar ? "text-black" : "text-black",
+                    "h-6 w-6 "
+                  )}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
