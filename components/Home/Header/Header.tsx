@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import DatePicker from "../../DatePicker/DataPicker";
 import Image from "next/image";
 import classnames from "classnames";
 const Header = () => {
   const [navbar, setNavbar] = useState<boolean>(false);
+  const [searchedLocation, setSearchedLocation] = useState<string>("");
 
   useEffect(function mount() {
     const changeBackground = () => {
@@ -24,7 +26,7 @@ const Header = () => {
     <>
       <header
         className={classnames(
-          navbar ? "bg-white" : "bg-black",
+          navbar || searchedLocation ? "bg-white" : "bg-black",
           "sticky top-0 z-50 p-5 md:px-20"
         )}
       >
@@ -42,13 +44,15 @@ const Header = () => {
           <div className="hidden sm:flex relative w-72 md:w-96">
             <div
               className={classnames(
-                navbar ? "-top-2" : "top-28",
+                navbar || searchedLocation ? "-top-2" : "top-28",
                 "transform transition duration-150 ease-in-out absolute flex broder border-2 border-gray-200 p-3 justify-center rounded-full mx-auto w-72 md:w-96"
               )}
             >
               <input
+                value={searchedLocation}
+                onChange={(e) => setSearchedLocation(e.target.value)}
                 className={classnames(
-                  navbar
+                  navbar || searchedLocation
                     ? "text-black placeholder-black"
                     : "text-white placeholder-white font-bold",
                   "flex-grow outline-none bg-transparent"
@@ -75,7 +79,7 @@ const Header = () => {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={classnames(
-                  navbar ? "block" : "hidden",
+                  navbar || searchedLocation ? "block" : "hidden",
                   "h-7 w-7 bg-red-400 text-white p-1 rounded-full cursor-pointer"
                 )}
                 viewBox="0 0 20 20"
@@ -91,14 +95,14 @@ const Header = () => {
             <div className="flex items-center space-x-4">
               <div
                 className={classnames(
-                  navbar ? "border-black" : "border-white",
+                  navbar || searchedLocation ? "border-black" : "border-white",
                   "flex p-1 border-2  rounded-full"
                 )}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={classnames(
-                    navbar ? "text-black" : "text-white",
+                    navbar || searchedLocation ? "text-black" : "text-white",
                     "h-6 w-6 "
                   )}
                   fill="none"
@@ -115,7 +119,7 @@ const Header = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={classnames(
-                    navbar ? "text-black" : "text-white",
+                    navbar || searchedLocation ? "text-black" : "text-white",
                     "h-6 w-6 "
                   )}
                   fill="none"
@@ -144,6 +148,8 @@ const Header = () => {
             <input
               className="flex-grow outline-none bg-transparent placeholder-white text-white"
               placeholder="Search a place here"
+              value={searchedLocation}
+              onChange={(e) => setSearchedLocation(e.target.value)}
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -160,6 +166,9 @@ const Header = () => {
           </div>
         </div>
       </header>
+      {searchedLocation && (
+        <DatePicker setSearchedLocation={setSearchedLocation} />
+      )}
     </>
   );
 };
