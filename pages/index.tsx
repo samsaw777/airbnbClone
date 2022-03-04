@@ -4,11 +4,12 @@ import Banner from "../components/Home/Banner/Banner";
 import SmallCard from "../components/Home/SmallCard";
 import MediumCard from "../components/Home/MediumCard";
 import LargeCard from "../components/Home/LargeCard";
+import Footer from "../components/Footer/Footer";
 
 const Home = ({ exploreData, mediumCardData }: any) => {
   console.log(mediumCardData);
   return (
-    <div className="block h-indexHeight">
+    <div className="block">
       <Header />
       <Banner />
       {/* Location Near By */}
@@ -51,6 +52,7 @@ const Home = ({ exploreData, mediumCardData }: any) => {
           />
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
