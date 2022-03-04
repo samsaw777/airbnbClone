@@ -1,15 +1,14 @@
 import React from "react";
 import Image from "next/image";
 interface Props {
-  key: number;
   img: string;
   location: string;
   distance: string;
 }
 
-const SmallCard = ({ key, img, location, distance }: Props) => {
+const SmallCard = ({ img, location, distance }: Props) => {
   return (
-    <div className="flex space-x-3 rounded-xl hover:bg-gray-100">
+    <div className="transition transform duration-150 ease-out flex space-x-3 rounded-xl hover:bg-gray-100 hover:scale-105 cursor-pointer hover:shadow-xl">
       <div className="relative h-16 w-16">
         <Image src={img} layout="fill" className="rounded-lg" alt="cityimage" />
       </div>

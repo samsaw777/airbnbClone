@@ -2,28 +2,55 @@ import type { NextPage } from "next";
 import Header from "../components/Home/Header/Header";
 import Banner from "../components/Home/Banner/Banner";
 import SmallCard from "../components/Home/SmallCard";
-const Home = (exploreData: any) => {
-  console.log(exploreData);
+import MediumCard from "../components/Home/MediumCard";
+import LargeCard from "../components/Home/LargeCard";
+
+const Home = ({ exploreData, mediumCardData }: any) => {
+  console.log(mediumCardData);
   return (
     <div className="block h-indexHeight">
       <Header />
       <Banner />
       {/* Location Near By */}
-      <div className="max-w-7xl mx-auto px-5 sm:px-16">
-        <p>Near By Location.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {exploreData?.exploreData?.map((item: any, key: number) => {
-            return (
-              <SmallCard
-                key={key}
-                img={item.img}
-                location={item.location}
-                distance={item.distance}
-              />
-            );
-          })}
+      <main className="max-w-7xl mx-auto px-5 sm:px-16 shadow-xl shadow-gray-300">
+        <div>
+          <p className="text-4xl font-semibold py-8">Explore NearBy</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {exploreData?.map((item: any, key: number) => {
+              return (
+                <SmallCard
+                  key={key}
+                  img={item.img}
+                  location={item.location}
+                  distance={item.distance}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+        <div>
+          <p className="text-4xl font-semibold py-8">Live Anywhere</p>
+          <div className="flex space-x-3 overflow-scroll">
+            {mediumCardData?.map((cardData: any, key: number) => {
+              return (
+                <MediumCard
+                  key={key}
+                  img={cardData.img}
+                  title={cardData.title}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div>
+          <LargeCard
+            img="https://links.papareact.com/4cj"
+            title="The Greatest Outdoors"
+            description="Whihlists curated by Airbnb"
+            buttonText="Get Inspired"
+          />
+        </div>
+      </main>
     </div>
   );
 };
@@ -33,13 +60,18 @@ export async function getStaticProps() {
     .then((res) => res.json())
     .catch((error) => console.error(error));
 
+  const mediumCardData = await fetch("https://links.papareact.com/zp1").then(
+    (response) => response.json()
+  );
+
   return {
     props: {
       exploreData,
+      mediumCardData,
     },
   };
 }
 
 export default Home;
 
-//https://links.papareact.com/pyp
+//https://links.papareact.com/pyp/zp1

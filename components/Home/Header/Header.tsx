@@ -24,7 +24,7 @@ const Header = () => {
     <>
       <header
         className={classnames(
-          navbar ? "bg-white" : "bg-transparent",
+          navbar ? "bg-white" : "bg-black",
           "sticky top-0 z-50 p-5 md:px-20"
         )}
       >
@@ -91,14 +91,14 @@ const Header = () => {
             <div className="flex items-center space-x-4">
               <div
                 className={classnames(
-                  navbar ? "border-black" : "border-black",
+                  navbar ? "border-black" : "border-white",
                   "flex p-1 border-2  rounded-full"
                 )}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={classnames(
-                    navbar ? "text-black" : "text-black",
+                    navbar ? "text-black" : "text-white",
                     "h-6 w-6 "
                   )}
                   fill="none"
@@ -115,7 +115,7 @@ const Header = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={classnames(
-                    navbar ? "text-black" : "text-black",
+                    navbar ? "text-black" : "text-white",
                     "h-6 w-6 "
                   )}
                   fill="none"
