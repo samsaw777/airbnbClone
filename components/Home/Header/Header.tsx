@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import DatePicker from "../../DatePicker/DataPicker";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import classnames from "classnames";
-const Header = () => {
+
+interface Props {
+  placeHolder?: string;
+}
+
+const Header = ({ placeHolder }: Props) => {
   const [navbar, setNavbar] = useState<boolean>(false);
   const [searchedLocation, setSearchedLocation] = useState<string>("");
-
+  const router = useRouter();
+  console.log(router.pathname);
   useEffect(function mount() {
     const changeBackground = () => {
       if (window.scrollY >= 20) {
@@ -32,7 +39,10 @@ const Header = () => {
       >
         {/* left Side */}
         <div className="flex justify-between">
-          <div className="relative flex items-center h-10 w-32  cursor-pointer my-auto">
+          <div
+            onClick={() => router.push("/")}
+            className="relative flex items-center h-10 w-32  cursor-pointer my-auto"
+          >
             <Image
               src="https://links.papareact.com/qd3"
               layout="fill"
@@ -44,7 +54,9 @@ const Header = () => {
           <div className="hidden sm:flex relative w-72 md:w-96">
             <div
               className={classnames(
-                navbar || searchedLocation ? "-top-2" : "top-28",
+                navbar || searchedLocation || router.pathname === "/search"
+                  ? "-top-2"
+                  : "top-28",
                 "transform transition duration-150 ease-in-out absolute flex broder border-2 border-gray-200 p-3 justify-center rounded-full mx-auto w-72 md:w-96"
               )}
             >
@@ -57,7 +69,7 @@ const Header = () => {
                     : "text-white placeholder-white font-bold",
                   "flex-grow outline-none bg-transparent"
                 )}
-                placeholder="Search a place here"
+                placeholder={placeHolder || "Search a place here"}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -141,13 +153,13 @@ const Header = () => {
         <div className="absolute top-28 left-0 right-0 px-10 block sm:hidden">
           <div
             className={classnames(
-              navbar ? "hidden" : "flex",
+              navbar || router.pathname == "/search" ? "hidden" : "flex",
               "broder border-2 border-white p-3 rounded-full md:w-96"
             )}
           >
             <input
               className="flex-grow outline-none bg-transparent placeholder-white text-white"
-              placeholder="Search a place here"
+              placeholder={placeHolder || "Search a place here"}
               value={searchedLocation}
               onChange={(e) => setSearchedLocation(e.target.value)}
             />
@@ -167,7 +179,10 @@ const Header = () => {
         </div>
       </header>
       {searchedLocation && (
-        <DatePicker setSearchedLocation={setSearchedLocation} />
+        <DatePicker
+          setSearchedLocation={setSearchedLocation}
+          searchedLocation={searchedLocation}
+        />
       )}
     </>
   );

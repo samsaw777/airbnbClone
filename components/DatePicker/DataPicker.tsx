@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme
-
+import classnames from "classnames";
+import { useRouter } from "next/router";
 interface Props {
   setSearchedLocation: React.Dispatch<React.SetStateAction<string>>;
+  searchedLocation: string;
 }
 
-const DatePicker = ({ setSearchedLocation }: Props) => {
-  const [selectedStartDate, setSelectedStartDate] = useState<Date>(new Date());
-  const [selectedEndDate, setSelectedEndDate] = useState<Date>(new Date());
+const DatePicker = ({ setSearchedLocation, searchedLocation }: Props) => {
+  const router = useRouter();
+  const [selectedStartDate, setSelectedStartDate] = useState<any>(new Date());
+  const [selectedEndDate, setSelectedEndDate] = useState<any>(new Date());
   const [members, setMembers] = useState<number>(1);
   const handleDateChange = (range: any) => {
     setSelectedStartDate(range.selection.startDate);
@@ -20,13 +23,30 @@ const DatePicker = ({ setSearchedLocation }: Props) => {
     setSearchedLocation("");
   };
 
+  const searchPlace = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchedLocation,
+        startDate: selectedStartDate.toISOString(),
+        endDate: selectedEndDate.toISOString(),
+        members,
+      },
+    });
+  };
+
   const selectionRange = {
     startDate: selectedStartDate,
     endDate: selectedEndDate,
     key: "selection",
   };
   return (
-    <div className="block w-fit mx-auto py-3 shadow-md mb-2">
+    <div
+      className={classnames(
+        searchedLocation ? "transform duration-150 transition ease-out" : "",
+        "block w-fit mx-auto py-3 shadow-md mb-2 bg-transparent"
+      )}
+    >
       <div className="flex flex-col">
         <DateRangePicker
           ranges={[selectionRange]}
@@ -62,7 +82,10 @@ const DatePicker = ({ setSearchedLocation }: Props) => {
           >
             Cancel
           </button>
-          <button className="flex flex-grow bg-[#FD5B61] text-white justify-center font-bold rounded-lg p-2">
+          <button
+            onClick={searchPlace}
+            className="flex flex-grow bg-[#FD5B61] text-white justify-center font-bold rounded-lg p-2"
+          >
             Search
           </button>
         </div>
