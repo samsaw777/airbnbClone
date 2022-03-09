@@ -12,8 +12,15 @@ const SearchHeader = ({ location, startDate, endDate, members }: Props) => {
   const formatedEndDate = format(new Date(endDate), "dd MMM yyyy");
   return (
     <div className="flex flex-col space-y-2 px-5 py-10">
-      <div className="text-md">
-        {formatedStartDate} - {formatedEndDate} - {members} members
+      <div className="text-md flex">
+        <span className="bg-[#FD5B61] text-white p-2 rounded-lg">
+          {formatedStartDate}
+        </span>{" "}
+        -{" "}
+        <span className="bg-[#FD5B61] text-white p-2 rounded-lg">
+          {formatedEndDate}
+        </span>{" "}
+        - {members} members
       </div>
       <div className="font-bold text-2xl">You have searched for {location}</div>
     </div>

@@ -21,7 +21,7 @@ const SearchList = ({
   total,
 }: Props) => {
   return (
-    <div className="bg-white rounded-lg shadow-xl flex flex-col sm:flex-row p-2 max-w-4xl cursor-pointer">
+    <div className="bg-white rounded-lg shadow-xl flex flex-col sm:flex-row p-2 max-w-4xl cursor-pointer transform hover:scale-105 duration-150">
       <div className="relative flex items-center h-44 w-full sm:w-[250px] sm:h-[210px] cursor-pointer justify-center rounded-lg">
         <Image
           src={image}

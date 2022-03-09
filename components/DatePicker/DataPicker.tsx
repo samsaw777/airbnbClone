@@ -43,8 +43,8 @@ const DatePicker = ({ setSearchedLocation, searchedLocation }: Props) => {
   return (
     <div
       className={classnames(
-        searchedLocation ? "transform duration-150 transition ease-out" : "",
-        "block w-fit mx-auto py-3 shadow-md mb-2 bg-transparent"
+        searchedLocation ? " " : "",
+        "block w-fit mx-auto py-3 shadow-md mb-2 bg-transparent transition duration-150  ease-out"
       )}
     >
       <div className="flex flex-col">
