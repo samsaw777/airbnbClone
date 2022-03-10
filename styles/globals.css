@@ -5,3 +5,18 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.rdrDefinedRangesWrapper {
+  display: none;
+}
+
+.rdrDateRangePickerWrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .rdrDefinedRangesWrapper {
+    display: block;
+  }
+}

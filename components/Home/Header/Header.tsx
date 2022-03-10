@@ -153,7 +153,9 @@ const Header = ({ placeHolder }: Props) => {
         <div className="absolute top-28 left-0 right-0 px-10 block sm:hidden">
           <div
             className={classnames(
-              navbar || router.pathname == "/search" ? "hidden" : "flex",
+              navbar || router.pathname == "/search" || searchedLocation
+                ? "hidden"
+                : "flex",
               "broder border-2 border-white p-3 rounded-full md:w-96"
             )}
           >

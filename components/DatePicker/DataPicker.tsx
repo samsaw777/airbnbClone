@@ -53,7 +53,7 @@ const DatePicker = ({ setSearchedLocation, searchedLocation }: Props) => {
           minDate={new Date()}
           rangeColors={["#FD5B61"]}
           onChange={handleDateChange}
-          className="bg-black"
+          className=""
         />
         <div className="flex px-5 items-center">
           <p className="flex flex-grow font-bold text-lg">Number of Guests</p>
