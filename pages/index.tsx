@@ -7,7 +7,6 @@ import LargeCard from "../components/Home/LargeCard";
 import Footer from "../components/Footer/Footer";
 
 const Home = ({ exploreData, mediumCardData }: any) => {
-  console.log(mediumCardData);
   return (
     <div className="block">
       <Header />
