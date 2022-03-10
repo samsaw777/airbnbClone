@@ -2,6 +2,7 @@ import Header from "../../components/Home/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SearchHeader from "../../components/Search/SearchHeader";
 import SearchList from "../../components/Search/SearchList";
+import Map from "../../components/Maps/Map";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 const Search = ({ roomsInformation }: any) => {
@@ -23,7 +24,7 @@ const Search = ({ roomsInformation }: any) => {
         endDate={endDate}
         members={members}
       />
-      <div className="mt-5 px-5 grid grdi-cols-1 gap-3 md:flex">
+      <div className="mt-5 px-5 grid grdi-cols-1 xl:grid-cols-2 gap-3">
         <div className="grid grid-cols-1 gap-4">
           {roomsInformation.map((room: any, key: number) => {
             return (
@@ -40,7 +41,7 @@ const Search = ({ roomsInformation }: any) => {
             );
           })}
         </div>
-        <div>This is the map area.</div>
+        <Map />
       </div>
       <Footer />
     </div>
