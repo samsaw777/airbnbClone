@@ -6,7 +6,6 @@ import Map from "../../components/Maps/Map";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 const Search = ({ roomsInformation }: any) => {
-  console.log(roomsInformation);
   const router = useRouter();
   const { location, startDate, endDate, members } = router.query;
   const sdate: any = startDate;
@@ -24,7 +23,7 @@ const Search = ({ roomsInformation }: any) => {
         endDate={endDate}
         members={members}
       />
-      <div className="mt-5 px-5 grid grdi-cols-1 xl:grid-cols-2 gap-3">
+      <div className="relative  mt-5 px-5 grid grdi-cols-1 xl:grid-cols-2 gap-3 z-20">
         <div className="grid grid-cols-1 gap-4">
           {roomsInformation.map((room: any, key: number) => {
             return (
@@ -41,7 +40,8 @@ const Search = ({ roomsInformation }: any) => {
             );
           })}
         </div>
-        <Map />
+
+        <Map searchList={roomsInformation} />
       </div>
       <Footer />
     </div>
