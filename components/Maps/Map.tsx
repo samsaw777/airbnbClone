@@ -12,13 +12,12 @@ const MapComponent = ({ searchList }: any) => {
   //get the center of the coordinates.
   const center: any = getCenter(coordinates);
 
-  console.log(center);
   const { latitude, longitude } = center;
 
   const [viewport, setViewport] = useState({
     latitude: latitude,
     longitude: longitude,
-    zoom: 8,
+    zoom: 10,
   });
 
   return (
@@ -39,9 +38,21 @@ const MapComponent = ({ searchList }: any) => {
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  willChange: "transform",
                 }}
-              ></Marker>
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10 text-[#FD5B61] shadow-xl animate-bounce cursor-pointer"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Marker>
             </div>
           );
         })}
