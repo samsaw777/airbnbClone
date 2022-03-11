@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "../../components/Home/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SearchHeader from "../../components/Search/SearchHeader";
@@ -5,11 +6,21 @@ import SearchList from "../../components/Search/SearchList";
 import Map from "../../components/Maps/Map";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
+
+interface SelectedLocation {
+  lat: number;
+  long: number;
+  index: number;
+}
+
 const Search = ({ roomsInformation }: any) => {
   const router = useRouter();
   const { location, startDate, endDate, members } = router.query;
   const sdate: any = startDate;
   const edate: any = endDate;
+  const [selectedLocation, setSelectedLocation] = useState<
+    SelectedLocation | any
+  >({});
   const formatedStartDate = format(new Date(sdate), "dd MMM");
   const formatedEndDate = format(new Date(edate), "dd MMM");
 
@@ -36,12 +47,21 @@ const Search = ({ roomsInformation }: any) => {
                 total={room.total}
                 star={room.star}
                 key={key}
+                lat={room.lat}
+                index={key}
+                long={room.long}
+                selectedLocation={selectedLocation}
+                setSelectedLocation={setSelectedLocation}
               />
             );
           })}
         </div>
 
-        <Map searchList={roomsInformation} />
+        <Map
+          searchList={roomsInformation}
+          selectedLocation={selectedLocation}
+          setSelectedLocation={setSelectedLocation}
+        />
       </div>
       <Footer />
     </div>
