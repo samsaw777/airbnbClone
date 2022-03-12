@@ -32,14 +32,14 @@ const SearchList = ({
 }: Props) => {
   React.useEffect(() => {
     window.scroll({
-      top: 0,
+      top: -100,
       left: 0,
       behavior: "smooth",
     });
   }, [selectedLocation]);
   return (
     <div
-      className="bg-white rounded-lg flex flex-col sm:flex-row p-2 w-full mx-auto cursor-pointer hover:shadow-xl"
+      className="bg-white shadow-lg md:shadow-none rounded-lg flex flex-col sm:flex-row p-2 w-full mx-auto cursor-pointer hover:shadow-xl"
       onClick={() => setSelectedLocation({ lat, long, index })}
     >
       <div className="relative flex items-center h-44 w-full sm:w-[250px] sm:h-[210px] cursor-pointer justify-center rounded-lg">

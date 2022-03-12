@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
 import getCenter from "geolib/es/getCenter";
-
+import Image from "next/image";
 interface Props {
   searchList: any;
   selectedLocation: any;
@@ -19,7 +19,6 @@ const MapComponent = ({
     longitude: room.long,
   }));
 
-  console.log(selectedLocation);
   //get the center of the coordinates.
   const center: any = getCenter(coordinates);
 
@@ -52,15 +51,15 @@ const MapComponent = ({
                 }}
               >
                 <div
-                // role="img"
-                // onClick={() =>
-                //   setSelectedLocation({
-                //     lat: room.lat,
-                //     long: room.long,
-                //     index: key,
-                //   })
-                // }
-                // aria-label="push-pin"
+                  role="img"
+                  onClick={() =>
+                    setSelectedLocation({
+                      lat: room.lat,
+                      long: room.long,
+                      index: key,
+                    })
+                  }
+                  // aria-label="push-pin"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +88,13 @@ const MapComponent = ({
                     color: "white",
                   }}
                 >
-                  This is the Popup for this app.
+                  <div className="flex flex-col space-y-2 text-black bg-white rounded-lg p-2">
+                    <div className="relative h-20 w-full mx-auto">
+                      <Image src={room.img} alt="Image" layout="fill" />
+                    </div>
+                    <p>{room.title}</p>
+                    <p>{room.price}</p>
+                  </div>
                 </Popup>
               ) : (
                 false

@@ -28,16 +28,16 @@ const Search = ({ roomsInformation }: any) => {
   return (
     <div>
       <Header placeHolder={placeHolder} />
-      {/* <SearchHeader
-        location={location}
-        startDate={startDate}
-        endDate={endDate}
-        members={members}
-      /> */}
 
       <div className="relative z-20 bg-[#051529]">
         <div className=" relative z-50 top-[400px]">
-          <div className="w-full md:w-3/4 md:mx-auto grid grid-cols-1 gap-4 bg-white rounded-[30px] py-10 shadow-xl px-10">
+          <div className="w-11/12 mx-auto md:w-3/4 md:mx-auto grid grid-cols-1 gap-4 bg-white rounded-[30px] py-10 shadow-xl px-10">
+            <SearchHeader
+              location={location}
+              startDate={startDate}
+              endDate={endDate}
+              members={members}
+            />
             {roomsInformation.map((room: any, key: number) => {
               return (
                 <SearchList
