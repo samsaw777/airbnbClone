@@ -28,42 +28,44 @@ const Search = ({ roomsInformation }: any) => {
   return (
     <div>
       <Header placeHolder={placeHolder} />
-      <SearchHeader
+      {/* <SearchHeader
         location={location}
         startDate={startDate}
         endDate={endDate}
         members={members}
-      />
-      <div className="relative  mt-5 px-5 grid grdi-cols-1 xl:grid-cols-2 gap-3 z-20">
-        <div className="grid grid-cols-1 gap-4">
-          {roomsInformation.map((room: any, key: number) => {
-            return (
-              <SearchList
-                image={room.img}
-                title={room.title}
-                description={room.description}
-                location={room.location}
-                price={room.price}
-                total={room.total}
-                star={room.star}
-                key={key}
-                lat={room.lat}
-                index={key}
-                long={room.long}
-                selectedLocation={selectedLocation}
-                setSelectedLocation={setSelectedLocation}
-              />
-            );
-          })}
-        </div>
+      /> */}
 
+      <div className="relative z-20 bg-[#051529]">
+        <div className=" relative z-50 top-[400px]">
+          <div className="w-full md:w-3/4 md:mx-auto grid grid-cols-1 gap-4 bg-white rounded-[30px] py-10 shadow-xl px-10">
+            {roomsInformation.map((room: any, key: number) => {
+              return (
+                <SearchList
+                  image={room.img}
+                  title={room.title}
+                  description={room.description}
+                  location={room.location}
+                  price={room.price}
+                  total={room.total}
+                  star={room.star}
+                  key={key}
+                  lat={room.lat}
+                  index={key}
+                  long={room.long}
+                  selectedLocation={selectedLocation}
+                  setSelectedLocation={setSelectedLocation}
+                />
+              );
+            })}
+          </div>
+          <Footer />
+        </div>
         <Map
           searchList={roomsInformation}
           selectedLocation={selectedLocation}
           setSelectedLocation={setSelectedLocation}
         />
       </div>
-      <Footer />
     </div>
   );
 };

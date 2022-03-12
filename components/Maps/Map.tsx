@@ -32,7 +32,7 @@ const MapComponent = ({
   });
 
   return (
-    <div className="overflow-hidden hidden xl:block w-full z-40">
+    <div className="overflow-y-hidden absolute top-0 xl:block w-full h-[90vh]">
       <Map
         {...viewport}
         mapStyle="mapbox://styles/samsaw777/cl0l68wxw006m15o8nxdg7nni"
@@ -81,6 +81,7 @@ const MapComponent = ({
                   closeOnClick={true}
                   longitude={room.long}
                   latitude={room.lat}
+                  focusAfterOpen={true}
                   style={{
                     position: "absolute",
                     top: 0,

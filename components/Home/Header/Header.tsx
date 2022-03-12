@@ -33,7 +33,7 @@ const Header = ({ placeHolder }: Props) => {
     <>
       <header
         className={classnames(
-          navbar || searchedLocation ? "bg-white shadow-xl" : "bg-black",
+          navbar || searchedLocation ? "bg-white shadow-xl" : "bg-[#051529]",
           "sticky top-0 z-50 p-5 md:px-20"
         )}
       >

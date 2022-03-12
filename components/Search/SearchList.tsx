@@ -32,7 +32,7 @@ const SearchList = ({
 }: Props) => {
   return (
     <div
-      className="bg-white rounded-lg shadow-xl flex flex-col sm:flex-row p-2 max-w-4xl cursor-pointer transform hover:scale-105 duration-150"
+      className="bg-white rounded-lg flex flex-col sm:flex-row p-2 w-full mx-auto cursor-pointer hover:shadow-xl"
       onClick={() => setSelectedLocation({ lat, long, index })}
     >
       <div className="relative flex items-center h-44 w-full sm:w-[250px] sm:h-[210px] cursor-pointer justify-center rounded-lg">
@@ -45,7 +45,7 @@ const SearchList = ({
           className="rounded-lg"
         />
       </div>
-      <div className="flex flex-col space-y-3 px-5 py-3">
+      <div className="flex flex-grow flex-col space-y-3 px-5 py-3">
         <div className="flex space-x-2 justify-between">
           <div className="text-md text-gray-500">{location}</div>
           <div>

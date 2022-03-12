@@ -10,3 +10,7 @@ Marker {
   position: absolute;
   top: 0;
 }
+
+/* .backDrop {
+  background: linear-gradient(to top, var(--light) 30%, transparent);
+} */
