@@ -30,6 +30,13 @@ const SearchList = ({
   setSelectedLocation,
   selectedLocation,
 }: Props) => {
+  React.useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [selectedLocation]);
   return (
     <div
       className="bg-white rounded-lg flex flex-col sm:flex-row p-2 w-full mx-auto cursor-pointer hover:shadow-xl"
