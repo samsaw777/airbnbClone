@@ -11,9 +11,17 @@ Marker {
   top: 0;
 }
 
-/* .backDrop {
-  background: linear-gradient(to top, var(--light) 30%, transparent);
-} */
+.mapboxgl-popup-close-button {
+  top: 2px;
+  outline: none;
+  color: white;
+  background-color: transparent;
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  font-size: 20px;
+  border-radius: 5px;
+}
 
 .rdrDefinedRangesWrapper {
   display: none;

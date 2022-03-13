@@ -83,15 +83,20 @@ const MapComponent = ({
                   focusAfterOpen={true}
                   style={{
                     position: "absolute",
-                    top: 0,
+                    top: "-24px",
                     left: 0,
-                    color: "white",
                   }}
                 >
-                  <div className="flex flex-col space-y-2 text-black bg-white rounded-lg p-2">
-                    <div className="relative h-20 w-full mx-auto">
+                  <div
+                    className="flex flex-col space-y-2 text-white font-bold bg-cover rounded-lg p-2 h-44 w-full items-start justify-end"
+                    style={{
+                      backgroundImage: `url(${room.img})`,
+                      backgroundColor: "#c4c4c4",
+                    }}
+                  >
+                    {/* <div className="relative h-20 w-full mx-auto">
                       <Image src={room.img} alt="Image" layout="fill" />
-                    </div>
+                    </div> */}
                     <p>{room.title}</p>
                     <p>{room.price}</p>
                   </div>
