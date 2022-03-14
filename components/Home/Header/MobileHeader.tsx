@@ -11,6 +11,7 @@ interface Props {
 const MobileHeader = ({ placeHolder }: Props) => {
   const [navbar, setNavbar] = useState<boolean>(false);
   const [searchedLocation, setSearchedLocation] = useState<string>("");
+  const [showDate, setShowDate] = useState<boolean>(false);
   const router = useRouter();
   console.log(router.pathname);
   useEffect(function mount() {
@@ -27,6 +28,7 @@ const MobileHeader = ({ placeHolder }: Props) => {
       window.removeEventListener("scroll", changeBackground);
     };
   });
+  console.log(searchedLocation);
   return (
     <>
       {/* <div className="block sm:hidden"> */}
@@ -102,6 +104,7 @@ const MobileHeader = ({ placeHolder }: Props) => {
         <DatePicker
           setSearchedLocation={setSearchedLocation}
           searchedLocation={searchedLocation}
+          setShowDate={setShowDate}
         />
       )}
     </>

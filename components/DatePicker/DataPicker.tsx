@@ -4,16 +4,23 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme
 import classnames from "classnames";
 import { useRouter } from "next/router";
+import { setDate } from "date-fns/esm";
 interface Props {
   setSearchedLocation: React.Dispatch<React.SetStateAction<string>>;
   searchedLocation: string;
+  setShowDate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DatePicker = ({ setSearchedLocation, searchedLocation }: Props) => {
+const DatePicker = ({
+  setSearchedLocation,
+  searchedLocation,
+  setShowDate,
+}: Props) => {
   const router = useRouter();
   const [selectedStartDate, setSelectedStartDate] = useState<any>(new Date());
   const [selectedEndDate, setSelectedEndDate] = useState<any>(new Date());
   const [members, setMembers] = useState<number>(1);
+
   const handleDateChange = (range: any) => {
     setSelectedStartDate(range.selection.startDate);
     setSelectedEndDate(range.selection.endDate);
@@ -33,6 +40,7 @@ const DatePicker = ({ setSearchedLocation, searchedLocation }: Props) => {
         members,
       },
     });
+    setShowDate(false);
   };
 
   const selectionRange = {

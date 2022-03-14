@@ -11,6 +11,7 @@ interface Props {
 const Header = ({ placeHolder }: Props) => {
   const [navbar, setNavbar] = useState<boolean>(false);
   const [searchedLocation, setSearchedLocation] = useState<string>("");
+  const [showDate, setShowDate] = useState<boolean>(false);
   const router = useRouter();
   console.log(router.pathname);
   useEffect(function mount() {
@@ -27,6 +28,8 @@ const Header = ({ placeHolder }: Props) => {
       window.removeEventListener("scroll", changeBackground);
     };
   });
+
+  console.log(searchedLocation);
 
   return (
     //This is for the Mobile View.
@@ -59,7 +62,7 @@ const Header = ({ placeHolder }: Props) => {
               className={classnames(
                 navbar || searchedLocation || router.pathname === "/search"
                   ? "-top-2"
-                  : "top-28",
+                  : "-top-2",
                 "transform transition duration-150 ease-in-out absolute flex broder border-2 border-gray-200 p-3 justify-center rounded-full mx-auto w-72 md:w-96"
               )}
             >
@@ -187,6 +190,7 @@ const Header = ({ placeHolder }: Props) => {
         <DatePicker
           setSearchedLocation={setSearchedLocation}
           searchedLocation={searchedLocation}
+          setShowDate={setShowDate}
         />
       )}
     </>
