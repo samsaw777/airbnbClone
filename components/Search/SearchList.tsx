@@ -6,12 +6,19 @@ interface Props {
   title: string;
   description: string;
   location: string;
+  lat: number;
+  long: number;
   star: string;
   price: string;
   total: string;
+  selectedLocation: any;
+  index: number;
+  setSelectedLocation: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const SearchList = ({
+  lat,
+  long,
   image,
   title,
   description,
@@ -19,9 +26,22 @@ const SearchList = ({
   star,
   price,
   total,
+  index,
+  setSelectedLocation,
+  selectedLocation,
 }: Props) => {
+  React.useEffect(() => {
+    window.scroll({
+      top: -100,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [selectedLocation]);
   return (
-    <div className="bg-white rounded-lg shadow-xl flex flex-col sm:flex-row p-2 max-w-4xl cursor-pointer transform hover:scale-105 duration-150">
+    <div
+      className="bg-white shadow-lg md:shadow-none rounded-lg flex flex-col sm:flex-row p-2 w-full mx-auto cursor-pointer hover:shadow-xl"
+      onClick={() => setSelectedLocation({ lat, long, index })}
+    >
       <div className="relative flex items-center h-44 w-full sm:w-[250px] sm:h-[210px] cursor-pointer justify-center rounded-lg">
         <Image
           src={image}
@@ -32,7 +52,7 @@ const SearchList = ({
           className="rounded-lg"
         />
       </div>
-      <div className="flex flex-col space-y-3 px-5 py-3">
+      <div className="flex flex-grow flex-col space-y-3 px-5 py-3">
         <div className="flex space-x-2 justify-between">
           <div className="text-md text-gray-500">{location}</div>
           <div>

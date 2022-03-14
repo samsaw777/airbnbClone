@@ -31,10 +31,13 @@ const Header = ({ placeHolder }: Props) => {
   return (
     //This is for the Mobile View.
     <>
+      {/* <div className="hidden sm:block"> */}
       <header
         className={classnames(
-          navbar || searchedLocation ? "bg-white shadow-xl" : "bg-black",
-          "sticky top-0 z-50 p-5 md:px-20"
+          navbar || searchedLocation
+            ? "bg-white shadow-xl sticky"
+            : "bg-[#051529]",
+          "hidden sm:block top-0 z-50 p-5 md:px-20"
         )}
       >
         {/* left Side */}
@@ -88,7 +91,7 @@ const Header = ({ placeHolder }: Props) => {
           {/* User Side */}
           <div className="flex space-x-2 sm:space-x-0 items-center">
             <div className="block sm:hidden">
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={classnames(
                   navbar || searchedLocation ? "block" : "hidden",
@@ -102,7 +105,7 @@ const Header = ({ placeHolder }: Props) => {
                   d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                   clipRule="evenodd"
                 />
-              </svg>
+              </svg> */}
             </div>
             <div className="flex items-center space-x-4">
               <div
@@ -178,6 +181,8 @@ const Header = ({ placeHolder }: Props) => {
           </div>
         </div>
       </header>
+      {/* </div> */}
+
       {searchedLocation && (
         <DatePicker
           setSearchedLocation={setSearchedLocation}
