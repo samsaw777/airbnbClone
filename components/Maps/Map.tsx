@@ -35,7 +35,7 @@ const MapComponent = ({
       <Map
         {...viewport}
         mapStyle="mapbox://styles/samsaw777/cl0l68wxw006m15o8nxdg7nni"
-        mapboxAccessToken="pk.eyJ1Ijoic2Ftc2F3Nzc3IiwiYSI6ImNsMGw2NzcydTA5MmczaXFkajlsOGVqMzMifQ.Gy9yrctbtDi-wdWcPhD8Jg"
+        mapboxAccessToken={process.env.mapbox_key}
         onMove={(evt) => setViewport(evt.viewState)}
       >
         {searchList.map((room: any, key: number) => {
