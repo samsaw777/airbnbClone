@@ -6,7 +6,7 @@ import SearchList from "../../components/Search/SearchList";
 import Map from "../../components/Maps/Map";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
-
+import MobileHeader from "../../components/Home/Header/MobileHeader";
 interface SelectedLocation {
   lat: number;
   long: number;
@@ -28,10 +28,10 @@ const Search = ({ roomsInformation }: any) => {
   return (
     <div>
       <Header placeHolder={placeHolder} />
-
+      <MobileHeader placeHolder={placeHolder} />
       <div className="relative z-20 bg-[#051529]">
         <div className=" relative z-50 top-[400px]">
-          <div className="w-11/12 mx-auto md:w-3/4 md:mx-auto grid grid-cols-1 gap-4 bg-white rounded-[30px] py-10 shadow-xl px-10">
+          <div className="w-full mx-auto md:w-3/4 md:mx-auto grid grid-cols-1 gap-4 bg-white rounded-[30px] py-10 shadow-xl px-10">
             <SearchHeader
               location={location}
               startDate={startDate}

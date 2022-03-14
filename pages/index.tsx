@@ -5,11 +5,12 @@ import SmallCard from "../components/Home/SmallCard";
 import MediumCard from "../components/Home/MediumCard";
 import LargeCard from "../components/Home/LargeCard";
 import Footer from "../components/Footer/Footer";
-
+import MobileHeader from "../components/Home/Header/MobileHeader";
 const Home = ({ exploreData, mediumCardData }: any) => {
   return (
     <div className="block">
       <Header />
+      <MobileHeader />
       <Banner />
       {/* Location Near By */}
       <main className="max-w-7xl mx-auto px-5 sm:px-16 shadow-xl shadow-gray-300">
