@@ -9,6 +9,7 @@ interface Props {
 }
 
 const Header = ({ placeHolder }: Props) => {
+  console.log(process.env.GOOGLE_ID);
   const { data: session } = useSession();
   console.log(session);
   const [navbar, setNavbar] = useState<boolean>(false);
