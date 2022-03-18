@@ -122,7 +122,7 @@ const Header = ({ placeHolder }: Props) => {
                 onClick={() => signIn()}
               >
                 {session ? (
-                  session.user?.name
+                  <div onClick={() => signOut()}>session.user?.name</div>
                 ) : (
                   <div className="flex">
                     <svg
