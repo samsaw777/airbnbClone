@@ -13,7 +13,7 @@ const Header = ({ placeHolder }: Props) => {
   const [searchedLocation, setSearchedLocation] = useState<string>("");
   const [showDate, setShowDate] = useState<boolean>(false);
   const router = useRouter();
-  console.log(router.pathname);
+
   useEffect(function mount() {
     const changeBackground = () => {
       if (window.scrollY >= 20) {
@@ -28,8 +28,6 @@ const Header = ({ placeHolder }: Props) => {
       window.removeEventListener("scroll", changeBackground);
     };
   });
-
-  console.log(searchedLocation);
 
   return (
     //This is for the Mobile View.
