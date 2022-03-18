@@ -16,7 +16,6 @@ const DatePicker = ({
   searchedLocation,
   setShowDate,
 }: Props) => {
-  console.log(process.env.GOOGLE_ID);
   const router = useRouter();
   const [selectedStartDate, setSelectedStartDate] = useState<any>(new Date());
   const [selectedEndDate, setSelectedEndDate] = useState<any>(new Date());

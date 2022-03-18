@@ -71,6 +71,7 @@ const Search = ({ roomsInformation }: any) => {
 };
 
 export async function getServerSideProps() {
+  console.log(process.env.GOOGLE_ID);
   const roomInformation = await fetch("https://links.papareact.com/isz").then(
     (res) => res.json()
   );
