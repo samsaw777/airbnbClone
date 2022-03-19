@@ -12,6 +12,7 @@ interface Props {
 const Header = ({ placeHolder }: Props) => {
   const { user } = Auth.useUser();
   console.log(user);
+
   // const { data: session } = useSession();
   // console.log(session);
   const [navbar, setNavbar] = useState<boolean>(false);
@@ -60,13 +61,13 @@ const Header = ({ placeHolder }: Props) => {
               objectPosition="left"
             />
           </div>
-          <div className="hidden sm:flex relative w-72 md:w-96">
+          <div className="flex flex-grow w-full relative justify-center">
             <div
               className={classnames(
                 navbar || searchedLocation || router.pathname === "/search"
                   ? "-top-2"
                   : "-top-2",
-                "transform transition duration-150 ease-in-out absolute flex broder border-2 border-gray-200 p-3 justify-center rounded-full mx-auto w-72 md:w-96"
+                "transform transition duration-150 ease-in-out absolute flex broder border-2 border-gray-200 p-3 justify-center rounded-full w-11/12"
               )}
             >
               <input
@@ -114,56 +115,81 @@ const Header = ({ placeHolder }: Props) => {
               </svg> */}
             </div>
             <div className="flex items-center space-x-4">
-              <div
-                className={classnames(
-                  navbar || searchedLocation
-                    ? "border-black text-black"
-                    : "border-white text-white",
-                  "flex p-1 border-2  rounded-full cursor-pointer"
-                )}
-                // onClick={() => signIn()}
-              >
-                {/* {session ? (
-                  <div onClick={() => signOut()}>session.user?.name</div>
-                ) : ( */}
-                <div className="flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={classnames(
-                      navbar || searchedLocation ? "text-black" : "text-white",
-                      "h-6 w-6 "
-                    )}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={classnames(
-                      navbar || searchedLocation ? "text-black" : "text-white",
-                      "h-6 w-6 "
-                    )}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+              {user ? (
+                <div
+                  className={classnames(
+                    navbar ? "text-black" : "text-white",
+                    "flex space-x-2 items-center"
+                  )}
+                >
+                  <div className="flex flex-col items-end mr-2">
+                    <p className=" cursor-pointer">
+                      {user?.user_metadata.email}
+                    </p>
+                    <p className="underline cursor-pointer">Logout</p>
+                  </div>
+                  <Image
+                    src={user?.user_metadata?.avatar_url}
+                    alt="user"
+                    width="30"
+                    height="30"
+                    className="rounded-full"
+                  />
                 </div>
-                {/* )} */}
-              </div>
+              ) : (
+                <div
+                  className={classnames(
+                    navbar || searchedLocation
+                      ? "border-black text-black"
+                      : "border-white text-white",
+                    "flex p-1 border-2  rounded-full cursor-pointer"
+                  )}
+                  // onClick={() => signIn()}
+                >
+                  <div className="flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={classnames(
+                        navbar || searchedLocation
+                          ? "text-black"
+                          : "text-white",
+                        "h-6 w-6 "
+                      )}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={classnames(
+                        navbar || searchedLocation
+                          ? "text-black"
+                          : "text-white",
+                        "h-6 w-6 "
+                      )}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* )} */}
+                </div>
+              )}
             </div>
           </div>
         </div>
