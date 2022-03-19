@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import DatePicker from "../../DatePicker/DataPicker";
+import { supabase } from "../../../utils/supabaseClient";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
@@ -12,7 +13,10 @@ interface Props {
 const Header = ({ placeHolder }: Props) => {
   const { user } = Auth.useUser();
   console.log(user);
-
+  const signOut = () => {
+    supabase.auth.signOut();
+    router.push("/login");
+  };
   // const { data: session } = useSession();
   // console.log(session);
   const [navbar, setNavbar] = useState<boolean>(false);
@@ -61,7 +65,7 @@ const Header = ({ placeHolder }: Props) => {
               objectPosition="left"
             />
           </div>
-          <div className="flex flex-grow w-full relative justify-center">
+          <div className="flex w-3/6 relative justify-center">
             <div
               className={classnames(
                 navbar || searchedLocation || router.pathname === "/search"
@@ -118,7 +122,7 @@ const Header = ({ placeHolder }: Props) => {
               {user ? (
                 <div
                   className={classnames(
-                    navbar ? "text-black" : "text-white",
+                    navbar || searchedLocation ? "text-black" : "text-white",
                     "flex space-x-2 items-center"
                   )}
                 >
@@ -126,7 +130,9 @@ const Header = ({ placeHolder }: Props) => {
                     <p className=" cursor-pointer">
                       {user?.user_metadata.email}
                     </p>
-                    <p className="underline cursor-pointer">Logout</p>
+                    <p className="underline cursor-pointer" onClick={signOut}>
+                      Logout
+                    </p>
                   </div>
                   <Image
                     src={user?.user_metadata?.avatar_url}
