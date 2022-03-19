@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
 import DatePicker from "../../DatePicker/DataPicker";
+import { supabase } from "../../../utils/supabaseClient";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
-
+import { Auth } from "@supabase/ui";
 interface Props {
   placeHolder?: string;
 }
 
 const MobileHeader = ({ placeHolder }: Props) => {
+  const { user } = Auth.useUser();
+
+  const signOut = () => {
+    supabase.auth.signOut();
+    router.push("/login");
+  };
   const [navbar, setNavbar] = useState<boolean>(false);
   const [searchedLocation, setSearchedLocation] = useState<string>("");
   const [showDate, setShowDate] = useState<boolean>(false);
@@ -86,18 +93,49 @@ const MobileHeader = ({ placeHolder }: Props) => {
           >
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
           </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-7 w-7 text-red-400"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-              clipRule="evenodd"
+          {user && (
+            <Image
+              src={user?.user_metadata?.avatar_url}
+              alt="user"
+              width="30"
+              height="30"
+              className="rounded-full"
             />
-          </svg>
+          )}
+
+          {user ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7 text-red-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              onClick={signOut}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7 text-red-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              onClick={() => router.push("/login")}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+              />
+            </svg>
+          )}
         </div>
       </div>
       {searchedLocation && (
