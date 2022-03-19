@@ -4,7 +4,6 @@ import { supabase } from "../../../utils/supabaseClient";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { Auth } from "@supabase/ui";
 interface Props {
   placeHolder?: string;
