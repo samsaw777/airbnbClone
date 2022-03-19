@@ -12,7 +12,6 @@ interface Props {
 
 const Header = ({ placeHolder }: Props) => {
   const { user } = Auth.useUser();
-  console.log(user);
   const signOut = () => {
     supabase.auth.signOut();
     router.push("/login");
