@@ -1,4 +1,5 @@
-import type { NextPage } from "next";
+import type { NextPage, GetServerSideProps } from "next";
+import { supabase } from "../utils/supabaseClient";
 import Header from "../components/Home/Header/Header";
 import Banner from "../components/Home/Banner/Banner";
 import SmallCard from "../components/Home/SmallCard";
@@ -73,6 +74,33 @@ export async function getStaticProps() {
     },
   };
 }
+
+// export const getServerSideProps: GetServerSideProps = async ({ req }: any) => {
+//   // Redirect unauthenticated users to login page
+//   const { user } = await supabase.auth.api.getUserByCookie(req);
+
+//   if (!user) {
+//     return { redirect: { destination: "/login", permanent: false } };
+//   } else {
+//     return { redirect: { destination: "/", permanent: false } };
+//   }
+
+//   // const exploreData = await fetch("https://links.papareact.com/pyp")
+//   //   .then((res) => res.json())
+//   //   .catch((error) => console.error(error));
+
+//   // const mediumCardData = await fetch("https://links.papareact.com/zp1").then(
+//   //   (response) => response.json()
+//   // );
+
+//   return {
+//     props: {
+//       user,
+//       // exploreData,
+//       // mediumCardData,
+//     },
+//   };
+// };
 
 export default Home;
 

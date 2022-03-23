@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
 import DatePicker from "../../DatePicker/DataPicker";
+import { supabase } from "../../../utils/supabaseClient";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { Auth } from "@supabase/ui";
 interface Props {
   placeHolder?: string;
 }
 
 const Header = ({ placeHolder }: Props) => {
-  const { data: session } = useSession();
-  console.log(session);
+  const { user } = Auth.useUser();
+  const signOut = () => {
+    supabase.auth.signOut();
+    router.push("/login");
+  };
+  // const { data: session } = useSession();
+  // console.log(session);
   const [navbar, setNavbar] = useState<boolean>(false);
   const [searchedLocation, setSearchedLocation] = useState<string>("");
   const [showDate, setShowDate] = useState<boolean>(false);
@@ -57,13 +63,13 @@ const Header = ({ placeHolder }: Props) => {
               objectPosition="left"
             />
           </div>
-          <div className="hidden sm:flex relative w-72 md:w-96">
+          <div className="flex w-3/6 relative justify-center">
             <div
               className={classnames(
                 navbar || searchedLocation || router.pathname === "/search"
                   ? "-top-2"
                   : "-top-2",
-                "transform transition duration-150 ease-in-out absolute flex broder border-2 border-gray-200 p-3 justify-center rounded-full mx-auto w-72 md:w-96"
+                "transform transition duration-150 ease-in-out absolute flex broder border-2 border-gray-200 p-3 justify-center rounded-full w-11/12"
               )}
             >
               <input
@@ -111,18 +117,39 @@ const Header = ({ placeHolder }: Props) => {
               </svg> */}
             </div>
             <div className="flex items-center space-x-4">
-              <div
-                className={classnames(
-                  navbar || searchedLocation
-                    ? "border-black text-black"
-                    : "border-white text-white",
-                  "flex p-1 border-2  rounded-full cursor-pointer"
-                )}
-                onClick={() => signIn()}
-              >
-                {session ? (
-                  <div onClick={() => signOut()}>session.user?.name</div>
-                ) : (
+              {user ? (
+                <div
+                  className={classnames(
+                    navbar || searchedLocation ? "text-black" : "text-white",
+                    "flex space-x-2 items-center"
+                  )}
+                >
+                  <div className="flex flex-col items-end mr-2">
+                    <p className=" cursor-pointer">
+                      {user?.user_metadata.email}
+                    </p>
+                    <p className="underline cursor-pointer" onClick={signOut}>
+                      Logout
+                    </p>
+                  </div>
+                  <Image
+                    src={user?.user_metadata?.avatar_url}
+                    alt="user"
+                    width="30"
+                    height="30"
+                    className="rounded-full"
+                  />
+                </div>
+              ) : (
+                <div
+                  className={classnames(
+                    navbar || searchedLocation
+                      ? "border-black text-black"
+                      : "border-white text-white",
+                    "flex p-1 border-2  rounded-full cursor-pointer"
+                  )}
+                  // onClick={() => signIn()}
+                >
                   <div className="flex">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -163,8 +190,10 @@ const Header = ({ placeHolder }: Props) => {
                       />
                     </svg>
                   </div>
-                )}
-              </div>
+
+                  {/* )} */}
+                </div>
+              )}
             </div>
           </div>
         </div>
