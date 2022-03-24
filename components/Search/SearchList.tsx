@@ -55,7 +55,10 @@ const SearchList = ({
       <div className="flex flex-grow flex-col space-y-3 px-5 py-3">
         <div className="flex space-x-2 justify-between">
           <div className="text-md text-gray-500">{location}</div>
-          <div>
+          <div className="flex space-x-3 items-center justify-center font-bold">
+            <button className="px-5 py-1 rounded-lg bg-red-400 text-white">
+              Book Room
+            </button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
