@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+import { Auth } from "@supabase/ui";
 interface Props {
   image: string;
   title: string;
@@ -30,6 +30,7 @@ const SearchList = ({
   setSelectedLocation,
   selectedLocation,
 }: Props) => {
+  const { user } = Auth.useUser();
   React.useEffect(() => {
     window.scroll({
       top: -100,
@@ -56,9 +57,15 @@ const SearchList = ({
         <div className="flex space-x-2 justify-between">
           <div className="text-md text-gray-500">{location}</div>
           <div className="flex space-x-3 items-center justify-center font-bold">
-            <button className="px-5 py-1 rounded-lg bg-red-400 text-white">
-              Book Room
-            </button>
+            {user && (
+              <button
+                className="px-5 py-1 rounded-lg bg-red-400 text-white hover:bg-red-500"
+                role="link"
+                disabled={!user}
+              >
+                {user ? "Book Room" : "Login to book!"}
+              </button>
+            )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
